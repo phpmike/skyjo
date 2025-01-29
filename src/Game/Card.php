@@ -65,7 +65,7 @@ class Card
     public function isEqual(Card $card)
     {
         // On ne peut pas dire que des cartes non visibles sont égales !
-        if (0 === $this->state & self::VISIBLE && 0 === $card->getState() & self::VISIBLE)
+        if (0 === $this->state & self::VISIBLE || 0 === $card->getState() & self::VISIBLE)
             return false;
 
         return $card->getValue() === $this->value;
