@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:8.0-cli
+    container_name: php-container
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\" && php composer-setup.php && php -r \"unlink('composer-setup.php');\" && php composer.phar install"
+    tty: true
